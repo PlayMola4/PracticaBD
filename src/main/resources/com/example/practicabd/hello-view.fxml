@@ -11,17 +11,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.practicabd.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1058.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.practicabd.HelloController">
    <children>
-      <Label layoutX="23.0" layoutY="19.0" text="Suscribers">
+      <Label layoutX="23.0" layoutY="19.0" text="Gestion de Productos" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="19.0">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TableView layoutX="22.0" layoutY="109.0" prefHeight="71.0" prefWidth="556.0">
+      <TableView fx:id="tabla" layoutX="18.0" layoutY="394.0" prefHeight="340.0" prefWidth="1020.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="394.0">
         <columns>
-          <TableColumn prefWidth="75.0" />
+          <TableColumn minWidth="-1.0" prefWidth="-1.0" visible="false" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -30,22 +29,32 @@
             <Point3D />
          </rotationAxis>
       </TableView>
-      <ImageView fitHeight="23.0" fitWidth="31.0" layoutX="548.0" layoutY="21.0" pickOnBounds="true" smooth="false">
+      <ImageView fitHeight="23.0" fitWidth="31.0" layoutX="548.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="21.0">
          <image>
-            <Image url="D:\\2DAM\\Desarrollo de interfaces\\Tema1\\Captura.png"/>
+            <Image url="D:\\2DAM\\Desarrollo de interfaces\\Tema1\\Captura.png" />
          </image>
       </ImageView>
-      <Label layoutX="240.0" layoutY="19.0" text="Mostrar Datos">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <TextField layoutX="166.0" layoutY="69.0" prefHeight="25.0" prefWidth="254.0" />
-      <Label layoutX="23.0" layoutY="71.0" text="Introducir Consulta">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Button layoutX="519.0" layoutY="69.0" mnemonicParsing="false" text="Ejecutar" />
+      <Button fx:id="ejecutar" layoutX="687.0" layoutY="65.0" mnemonicParsing="false" onAction="#onEjecutarConsulta" prefHeight="40.0" prefWidth="363.0" text="Ejecutar" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="65.0" />
+      <Label layoutX="22.0" layoutY="64.0" text="ID" />
+      <Label layoutX="21.0" layoutY="98.0" text="Nombre" />
+      <Label layoutX="17.0" layoutY="212.0" text="Vendedor" />
+      <Label layoutX="20.0" layoutY="136.0" text="Linea" />
+      <Label layoutX="18.0" layoutY="175.0" text="Escala" />
+      <TextField layoutX="113.0" layoutY="94.0" />
+      <TextField layoutX="113.0" layoutY="208.0" />
+      <TextField layoutX="113.0" layoutY="171.0" />
+      <TextField layoutX="113.0" layoutY="132.0" />
+      <TextField layoutX="113.0" layoutY="60.0" />
+      <Label layoutX="17.0" layoutY="249.0" text="Descripcion" />
+      <Label layoutX="20.0" layoutY="287.0" text="Stock" />
+      <Label layoutX="17.0" layoutY="362.0" text="Precio Venta" />
+      <Label layoutX="15.0" layoutY="322.0" text="Precio Compra" />
+      <TextField layoutX="113.0" layoutY="245.0" />
+      <TextField layoutX="113.0" layoutY="283.0" />
+      <TextField layoutX="113.0" layoutY="318.0" />
+      <TextField layoutX="113.0" layoutY="358.0" />
+      <Button fx:id="ejecutar1" layoutX="687.0" layoutY="116.0" mnemonicParsing="false" onAction="#onEjecutarConsulta" prefHeight="40.0" prefWidth="363.0" text="Dar de Alta" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="116.0" />
+      <Button fx:id="ejecutar11" layoutX="687.0" layoutY="164.0" mnemonicParsing="false" onAction="#onEjecutarConsulta" prefHeight="40.0" prefWidth="363.0" text="Actualizar" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="164.0" />
+      <Button fx:id="ejecutar111" layoutX="687.0" layoutY="213.0" mnemonicParsing="false" onAction="#onEjecutarConsulta" prefHeight="40.0" prefWidth="363.0" text="Borrar" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="213.0" />
    </children>
 </AnchorPane>
