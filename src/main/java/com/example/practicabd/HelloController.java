@@ -1,63 +1,96 @@
 package com.example.practicabd;
 
+import com.example.practicabd.modulos.Producto;
+import com.example.practicabd.dao.ProductoDAO;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.*;
+import javafx.scene.control.TextField;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.converter.DoubleStringConverter;
+import javafx.util.converter.NumberStringConverter;
 
 public class HelloController {
 
-    private ObservableList<ObservableList> data;
-
-    private Connection conexionBBDD;
-
+    ProductoDAO productDAO = new ProductoDAO();
+    Producto productoAux;
+    ObservableList <Producto> datos;
     @FXML
     private Button ejecutar;
-    @FXML
-    private TableView tabla;
     @FXML
     private Button ejecutar1;
     @FXML
     private Button ejecutar11;
     @FXML
     private Button ejecutar111;
+    @FXML
+    private TextField nombre;
+    @FXML
+    private TextField vendedor;
+    @FXML
+    private TextField escala;
+    @FXML
+    private TextField linea;
+    @FXML
+    private TextField id;
+    @FXML
+    private TextField descripcion;
+    @FXML
+    private TextField stock;
+    @FXML
+    private TextField precioCompra;
+    @FXML
+    private TextField precioVenta;
+    @FXML
+    private TableColumn idTabla;
+    @FXML
+    private TableColumn nombreTabla;
+    @FXML
+    private TableColumn lineaTabla;
+    @FXML
+    private TableColumn escalaTabla;
+    @FXML
+    private TableColumn vendedorTabla;
+    @FXML
+    private TableColumn descripcionTabla;
+    @FXML
+    private TableColumn stockTabla;
+    @FXML
+    private TableColumn precioCompraTabla;
+    @FXML
+    private TableColumn precioVentaTabla;
+    @FXML
+    private TableView <Producto> tvDatos;
 
-    @Deprecated
-    public void onEjecutarConsulta(ActionEvent actionEvent) throws SQLException {
-        String SQL = "SELECT * "
-                + "FROM products "
-                + "ORDER By productName";
+    public void cargarDatos() {
+        datos = productDAO.obtenerProductos();
 
-        // Ejecutamos la consulta y nos devuelve una matriz de filas (registros) y columnas (datos)
-        ResultSet resultadoConsulta = conexionBBDD.createStatement().executeQuery(SQL);
+        idTabla.setCellValueFactory(new PropertyValueFactory<Producto, String>("productCode"));
+        descripcionTabla.setCellValueFactory(new PropertyValueFactory<Producto, String>("productDescription"));
+        lineaTabla.setCellValueFactory(new PropertyValueFactory<Producto, String>("productLine"));
+        nombreTabla.setCellValueFactory(new PropertyValueFactory<Producto, String>("productName"));
+        escalaTabla.setCellValueFactory(new PropertyValueFactory<Producto, String>("productScale"));
+        vendedorTabla.setCellValueFactory(new PropertyValueFactory<Producto, String>("productVendor"));
 
-        // Debemos cargar los datos en el ObservableList (Que es un ArrayList especial)
-        // Los datos que devuelve la consulta no son directamente cargables en nuestro objeto
-        while (resultadoConsulta.next()) {
-            data.add(new Producto(
-                    resultadoConsulta.getString("productCode"),
-                    resultadoConsulta.getString("productName"),
-                    resultadoConsulta.getString("productLine"),
-                    resultadoConsulta.getString("productScale"),
-                    resultadoConsulta.getString("productVendor"),
-                    resultadoConsulta.getString("productDescription"),
-                    resultadoConsulta.getInt("quantityInStock"),
-                    resultadoConsulta.getDouble("buyPrice"),
-                    resultadoConsulta.getDouble("MSRP"))
-            );
-            System.out.println("Row [1] added " + resultadoConsulta.toString());
-        }
-        conexionBBDD.close();
-    } catch (Exception e) {
-        e.printStackTrace();
-        System.out.println("Error:" + e.toString());
-        conexionBBDD.close();
-    } finally {
-        return datosResultadoConsulta;
+        precioCompraTabla.setCellValueFactory(new PropertyValueFactory<Producto, Double>("buyPrice"));
+        precioVentaTabla.setCellValueFactory(new PropertyValueFactory<Producto, Double>("MSRP"));
+        stockTabla.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("quantityInStock"));
+
+        tvDatos.setItems(datos);
     }
+
+    @FXML
+    public void onEjecutarConsulta(ActionEvent actionEvent) {
+        cargarDatos();
+
+    }
+
+
 }
