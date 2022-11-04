@@ -6,4 +6,8 @@ module com.example.practicabd {
 
     opens com.example.practicabd to javafx.fxml;
     exports com.example.practicabd;
+
+    exports  com.example.practicabd.modulos;
+
+    exports com.example.practicabd.dao;
 }

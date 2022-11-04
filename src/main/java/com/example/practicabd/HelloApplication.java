@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -16,6 +17,9 @@ public class HelloApplication extends Application {
         stage.setMinWidth(1270);
         stage.setMinHeight(920);
         stage.setScene(scene);
+        stage.initStyle(StageStyle.DECORATED);
+        scene.getStylesheets().add
+                (HelloApplication.class.getResource("css/styles.css").toExternalForm());
         stage.show();
     }
 

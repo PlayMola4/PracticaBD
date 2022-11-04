@@ -17,7 +17,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.NumberStringConverter;
 
+import java.sql.Connection;
+
 public class HelloController {
+    private final String servidor = "jdbc:mariadb://localhost:5555/noinch?useSSL=false";
+    private final String usuario = "adminer";
+    private final String passwd = "adminer";
+
+    private Connection conexionBBDD;
 
     ProductoDAO productDAO = new ProductoDAO();
     Producto productoAux;
@@ -68,23 +75,25 @@ public class HelloController {
     private TableColumn precioVentaTabla;
     @FXML
     private TableView <Producto> tvDatos;
-
     public void cargarDatos() {
         datos = productDAO.obtenerProductos();
 
         idTabla.setCellValueFactory(new PropertyValueFactory<Producto, String>("productCode"));
-        descripcionTabla.setCellValueFactory(new PropertyValueFactory<Producto, String>("productDescription"));
-        lineaTabla.setCellValueFactory(new PropertyValueFactory<Producto, String>("productLine"));
         nombreTabla.setCellValueFactory(new PropertyValueFactory<Producto, String>("productName"));
+        lineaTabla.setCellValueFactory(new PropertyValueFactory<Producto, String>("productLine"));
         escalaTabla.setCellValueFactory(new PropertyValueFactory<Producto, String>("productScale"));
         vendedorTabla.setCellValueFactory(new PropertyValueFactory<Producto, String>("productVendor"));
-
+        descripcionTabla.setCellValueFactory(new PropertyValueFactory<Producto, String>("productDescription"));
+        stockTabla.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("quantityInStock"));
         precioCompraTabla.setCellValueFactory(new PropertyValueFactory<Producto, Double>("buyPrice"));
         precioVentaTabla.setCellValueFactory(new PropertyValueFactory<Producto, Double>("MSRP"));
-        stockTabla.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("quantityInStock"));
 
         tvDatos.setItems(datos);
     }
+
+    /*public void intiliaze() {
+        cargarDatos();
+    }*/
 
     @FXML
     public void onEjecutarConsulta(ActionEvent actionEvent) {

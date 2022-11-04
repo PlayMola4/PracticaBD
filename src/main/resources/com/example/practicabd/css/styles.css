@@ -1,0 +1,32 @@
+.root {
+    -fx-background-color: rgb(227, 227, 227);
+    -fx-border-width: 5px;
+    -fx-border-color: #005bff;
+}
+
+.column-header {
+    -fx-background-color: #005bff;
+}
+
+.button  {
+    -fx-border-radius: 50px;
+    -fx-background-color: #005bff;
+    -fx-font-family: Arial;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+.text-field {
+    -fx-background-radius: 5px;
+}
+
+.cabecera {
+    -fx-background-radius: 20px;
+    -fx-background-color: #005bff;
+}
+
+.texto-cabecera {
+    -fx-font-family: Arial;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
