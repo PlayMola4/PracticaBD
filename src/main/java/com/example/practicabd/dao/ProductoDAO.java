@@ -6,7 +6,9 @@ import javafx.collections.ObservableList;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.StringTokenizer;
 
 public class ProductoDAO {
     private final String servidor = "jdbc:mariadb://localhost:5555/noinch?useSSL=false";
